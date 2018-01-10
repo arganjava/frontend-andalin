@@ -1,0 +1,46 @@
+<h2>Users Form</h2>
+
+<div>
+  <label>
+    <input [(ngModel)]="user.name" placeholder="name"/>
+  </label>
+  <label>
+    <input [(ngModel)]="user.email" placeholder="email"/>
+  </label>
+  <select [(ngModel)]="user.role">
+    <option value="mahasiswa" selected>mahasiswa</option>
+    <option value="karyawan">karyawan</option>
+  </select>
+  <button (click)="save(user)">Save</button>
+</div>
+
+<h2>Users List</h2>
+{{users}}
+<table border="1">
+  <thead>
+  <th>
+    id
+  </th>
+  <th>
+    name
+  </th>
+  <th>
+    email
+  </th>
+  <th>
+    role
+  </th>
+  <th>
+    action
+  </th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let usr of users" >
+    <td>{{usr.id}}</td>
+    <td>{{usr.name}}</td>
+    <td>{{usr.email}}</td>
+    <td>{{usr.role}}</td>
+    <td><button (click)="delete()">delete</button><span> <button (click)="edit(usr)" >edit</button></span></td>
+  </tr>
+  </tbody>
+</table>

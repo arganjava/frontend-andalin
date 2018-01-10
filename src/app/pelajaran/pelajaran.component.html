@@ -1,0 +1,42 @@
+<h2>Pelajaran Form</h2>
+
+<div>
+  <label>
+    <input [(ngModel)]="pelajaran.mataPelajaran" placeholder="mataPelajaran"/>
+  </label>
+  <label>
+    <input [(ngModel)]="pelajaran.jumlahSKS" placeholder="jumlahSKS"/>
+  </label>
+  <button (click)="save()">Save</button>
+</div>
+
+<h2>Pelajaran List</h2>
+
+<table border="1">
+  <thead>
+  <th>
+    id
+  </th>
+  <th>
+    mata pelajaran
+  </th>
+  <th>
+    email
+  </th>
+  <th>
+    role
+  </th>
+  <th>
+    action
+  </th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let pl of pelajarans" >
+    <td>{{pl.id}}</td>
+    <td>{{pl.mataPelajaran}}</td>
+    <td>{{pl.jumlahSKS}}</td>
+    <td>{{pl.owner}}</td>
+    <td><button (click)="delete()">delete</button><span> <button (click)="edit(pl)" >edit</button></span></td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,54 @@
+<h2>Transaksi Form</h2>
+<div>
+  <label>
+    Pelajaran
+    <select [(ngModel)]="transaksi.idPelajaran">
+      <option *ngFor="let pl of pelajarans" value="{{pl.id}}" selected>{{pl.mataPelajaran}}</option>
+    </select>
+  </label>
+  <br>
+  <label>
+    User
+    <select [(ngModel)]="transaksi.idUser">
+      <option *ngFor="let usr of users" value="{{usr.id}}" selected>{{usr.name}}</option>
+    </select>
+  </label>
+  <br>
+  <label>
+    <input [(ngModel)]="transaksi.biaya" placeholder="biaya">
+  </label>
+  <br>
+  <button (click)="assignUser(transaksi)">Save</button>
+</div>
+
+<h2> List Transaksi</h2>
+
+<table border="1">
+  <thead>
+  <th>
+    id
+  </th>
+  <th>
+    name user
+  </th>
+  <th>
+    pelajaran
+  </th>
+  <th>
+    biaya
+  </th>
+  <th>
+    status bayar
+  </th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let pby of pembayarans">
+    <td>{{pby.id}}</td>
+    <td>{{pby.owner.name}}</td>
+    <td>{{pby.pelajaran.mataPelajaran}}</td>
+    <td>{{pby.biaya}}</td>
+    <td *ngIf="pby.ispaid === 'yes'">Lunas</td>
+    <td *ngIf="pby.ispaid === 'no'"><button (click)="clickBayar(pby)">Bayar</button></td>
+  </tr>
+  </tbody>
+</table>
